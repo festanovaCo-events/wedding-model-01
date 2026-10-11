@@ -4,7 +4,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "baseUrl": "./src",
+    "rootDir": "./src",
+    "paths": {
+      "assets/*": ["./src/assets/*"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "noImplicitOverride": true,

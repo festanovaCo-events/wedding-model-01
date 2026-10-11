@@ -1,0 +1,5 @@
+@layer utilities {
+    .box-aros {
+        background: var(--theme-countdown-circle) center center no-repeat;
+    }
+}

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ACTIVE_THEME } from './features/shared/themes/active-theme';
+import { applyThemeStyleProperties } from './features/shared/themes/theme-utils';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,10 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'wedding-invitation-tmp';
+export class AppComponent implements OnInit {
+  title = 'wedding-model-01';
+
+  ngOnInit(): void {
+    applyThemeStyleProperties(ACTIVE_THEME, document.documentElement);
+  }
 }

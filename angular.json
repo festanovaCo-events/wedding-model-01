@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wedding-invitation-tmp": {
+    "wedding-model-01": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/wedding-invitation-tmp",
+            "baseHref": "/invitations-wedding-model-01/",
+            "outputPath": "dist/wedding-model-01",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -99,10 +100,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "wedding-invitation-tmp:build:production"
+              "buildTarget": "wedding-model-01:build:production"
             },
             "development": {
-              "buildTarget": "wedding-invitation-tmp:build:development"
+              "buildTarget": "wedding-model-01:build:development"
             }
           },
           "defaultConfiguration": "development"

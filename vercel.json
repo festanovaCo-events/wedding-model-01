@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/invitations-wedding-model-01/(.*\\..*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/invitations-wedding-model-01/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

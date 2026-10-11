@@ -1,0 +1,34 @@
+.parallax-container {
+  /* background-image: url("../../../../assets/images/banner-home/portada-boda.gif"); */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.parallax-container::before {
+  background-color: var(--theme-overlay);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.parallax-container::after {
+  background-image: var(--theme-banner-home-waves);
+  position: absolute;
+  content: "";
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  z-index: 9;
+}

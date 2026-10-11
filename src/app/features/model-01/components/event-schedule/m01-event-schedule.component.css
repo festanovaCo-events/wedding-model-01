@@ -1,0 +1,13 @@
+@layer utilities {
+  .wave::after {
+    content: "";
+    position: absolute;
+    background-image: var(--theme-event-schedule-waves);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+  }
+}

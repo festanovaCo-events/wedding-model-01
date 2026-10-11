@@ -1,27 +1,71 @@
-# WeddingInvitationTmp
+# Wedding Invitation Template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+Proyecto Angular para una invitacion de boda con soporte para temas visuales, variables de entorno generadas, feature flags y mocks de API. Forma parte de la plataforma FestanovaCo: el marketing vive en Next.js (`festanovaco-web`) y esta app se sirve en `festanovaco.com/invitations-wedding-model-01`.
 
-## Development server
+- Intención (objetivo, razones, arquitectura, alcance): [docs/arquitectura-festanovaco.md](./docs/arquitectura-festanovaco.md)
+- Spec técnica de rewrites y `baseHref`: [docs/superpowers/specs/2026-08-23-festanovaco-shell-rewrites-design.md](./docs/superpowers/specs/2026-08-23-festanovaco-shell-rewrites-design.md)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Documentacion Principal
 
-## Code scaffolding
+La guia completa esta en:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Guia global del proyecto](./docs/guia-global.md)
 
-## Build
+Documentacion especifica:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Variables de entorno en Angular y Vercel](./docs/environments.md)
+- [Feature flags para mocks de API](./docs/api-mock-flags.md)
+- [Configuracion de cache para produccion](./docs/cache-config.md)
+- [Sistema de temas para templates](./docs/sistema-temas-template.md)
 
-## Running unit tests
+## Inicio Rapido
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Instala dependencias:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Genera los archivos de entorno:
 
-## Further help
+```bash
+node scripts/generate-environment.js
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Opcionalmente, apunta a un API local:
+
+```bash
+NG_APP_API_BASE_URL=http://localhost:3000 node scripts/generate-environment.js
+```
+
+Selecciona un tema:
+
+```bash
+npm run theme:navy
+# o
+npm run theme:forest
+```
+
+Levanta el proyecto:
+
+```bash
+npm start
+```
+
+La aplicacion queda disponible en:
+
+```text
+http://localhost:4200/
+```
+
+## Scripts Utiles
+
+```bash
+npm start
+npm run build
+npm run watch
+npm test -- --watch=false --browsers=ChromeHeadless
+node --test scripts/select-theme.test.js scripts/generate-theme-assets.test.js
+```
+
+Para ver el paso a paso completo de entorno local, production, develop/preview, feature flags y templates, consulta la [guia global](./docs/guia-global.md).

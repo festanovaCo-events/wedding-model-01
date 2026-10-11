@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ACTIVE_THEME } from './features/shared/themes/active-theme';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -14,16 +15,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'wedding-invitation-tmp' title`, () => {
+  it(`should have the 'wedding-model-01' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('wedding-invitation-tmp');
+    expect(app.title).toEqual('wedding-model-01');
   });
 
-  it('should render title', () => {
+  it('should apply the active theme to the document root', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, wedding-invitation-tmp');
+
+    expect(document.documentElement.style.getPropertyValue('--theme-primary')).toBe(ACTIVE_THEME.palette.primary);
+    expect(document.documentElement.dataset['theme']).toBe(ACTIVE_THEME.name);
   });
 });

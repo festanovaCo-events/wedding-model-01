@@ -1,0 +1,39 @@
+@layer utilities {
+  .instructions {
+    background: var(--theme-instructions-waves-top) center top no-repeat var(--theme-surface-alt);
+    padding-top: 14%;
+    position: relative;
+    padding-bottom: 35%;
+  }
+
+  .instructions::after {
+    background-image: var(--theme-instructions-waves-bottom);
+    position: absolute;
+    content: "";
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+    background-size: contain !important;
+    background-position: center bottom;
+  }
+
+  @media only screen and (min-width: 425px) {
+    .instructions {
+      padding-bottom: 30%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .instructions {
+      padding-bottom: 25%;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .instructions {
+      padding-bottom: 19%;
+    }
+  }
+}

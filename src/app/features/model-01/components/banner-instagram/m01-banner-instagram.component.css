@@ -1,0 +1,44 @@
+@layer utilities {
+    .instagram {
+        padding-top: 16%;
+        padding-bottom: 16%;
+        position: relative;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+
+    .instagram::before {
+        background-image: var(--theme-banner-instagram-top-waves);
+        position: absolute;
+        content: '';
+        background-color: var(--theme-overlay);
+        background-size: contain !important;
+        background-repeat: no-repeat;
+        background-position: top center;
+        height: 100%;
+        width: 100%;
+        top: -1px;
+        z-index: 1;
+    }
+
+    .instagram::after {
+        background-image: var(--theme-banner-instagram-bottom-waves);
+        position: absolute;
+        content: '';
+        background-size: contain !important;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        height: 100%;
+        width: 100%;
+        bottom: -2px;
+        z-index: 99;
+    }
+
+    @media only screen and (max-width: 425px) {
+        .instagram {
+            padding-top: 35%;
+            padding-bottom: 50%;
+        }
+    }
+}
