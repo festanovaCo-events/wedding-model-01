@@ -5,8 +5,9 @@ import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { InvitationStateService } from '../../../services/invitation-state.service';
 import { InvitationService } from '../../../services/invitation.service';
-import { InvitationInfoResponse } from '../../../interfaces/invitation.interface';
 import { ConfirmAlertComponent } from '../../common/confirm-alert/confirm-alert.component';
+
+export const CONFIRMATION_STEP_DELAY_MS = 1500;
 
 @Component({
   selector: 'app-content-confirmation-modal',
@@ -28,7 +29,7 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
   
   nameCurrent: string = '';
   listName: string[] = [];
-  maximumQuotas: number = 7;
+  maximumQuotas = 0;
   registrationSent: boolean = false;
   hostName: string = '';
   private subscription?: Subscription;
@@ -55,7 +56,7 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
         this.token = data.data.invitation.token || '';
         
         this.hostName = data.data.invitation.name || '';
-        this.maximumQuotas = data.data.available_seats || 7;
+        this.maximumQuotas = data.data.available_seats;
         
         if (this.hostName) {
           this.listName = [this.hostName];
@@ -77,9 +78,6 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
     this.subscription?.unsubscribe();
   }
 
-  /**
-   * Recargar la información de la invitación después de aceptar o rechazar
-   */
   private reloadInvitationData(): void {
     if (!this.token) {
       console.warn('No hay token disponible para recargar la información');
@@ -105,7 +103,7 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
       
       setTimeout(() => {
         this.currentStep = 'guests';
-      }, 1500);
+      }, CONFIRMATION_STEP_DELAY_MS);
     } else if (this.isConfirmed === false) {
       this.currentStep = 'decline-confirmation';
     }

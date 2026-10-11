@@ -31,7 +31,7 @@ export const BASE_THEME_ASSETS: ThemeAssets = {
   bannerVideo: '',
   bannerImage: 'assets/images/banner-home/portada-boda.webp',
   instagramBackground: 'assets/images/banner-instagram/banner.jpeg',
-  music: 'assets/music/EdSheeran-Perfect(Lyrics).mp3',
+  music: 'assets/music/sound.mp3',
   decorations: {
     bannerHomeWaves: 'assets/generated/active/images/banner-home/img_ondas01.svg',
     bannerInstagramTopWaves: 'assets/generated/active/images/banner-instagram/img_ondas05.svg',

@@ -48,8 +48,8 @@ export class M01ConfirmationsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const dataSubscription = this.invitationStateService.getInvitationData$().subscribe(data => {
       this.invitationData = data;
-      this.isConfirmed = data?.data.invitation.status === 'ACCEPTED';
-      this.isDeclined = data?.data.invitation.status === 'DECLINED';
+      this.isConfirmed = this.invitationStateService.isConfirmed();
+      this.isDeclined = this.invitationStateService.isDeclined();
     });
     this.subscriptions.push(dataSubscription);
 

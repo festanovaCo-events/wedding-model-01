@@ -1,8 +1,9 @@
 import { ACTIVE_THEME } from '../themes/active-theme';
 
+const COUPLE_HASHTAG = '#Jorge&Yina';
+
 /**
- * Objeto centralizado con toda la información de la boda
- * Este objeto contiene todos los datos necesarios para la página de invitación
+ * Fuente única de textos, fechas y plazo de esta boda.
  */
 export const WEDDING_INFO = {
   // Información de la pareja
@@ -10,7 +11,7 @@ export const WEDDING_INFO = {
     husbandName: 'Jorge',
     wifeName: 'Yina',
     fullName: 'Jorge & Yina',
-    hashtag: '#Jorge&Yina',
+    hashtag: COUPLE_HASHTAG,
   },
 
   // Confirmación de asistencia
@@ -23,14 +24,8 @@ export const WEDDING_INFO = {
 
   // Fechas
   dates: {
-    bannerDate: '12.09.2026', // Fecha mostrada en el banner
-    weddingDate: '2026-09-12T16:00:00', // Fecha objetivo para el countdown
-    ceremonyDate: 'Sábado 12 de Septiembre - 16:00',
-    partyDate: 'Sábado 12 de Septiembre - 19:30',
-    ceremonyDateTimeISO: '20260912T210000Z', // Para Google Calendar
-    ceremonyEndDateTimeISO: '20260912T220000Z',
-    partyDateTimeISO: '20260913T003000Z',
-    partyEndDateTimeISO: '20260913T040000Z',
+    bannerDate: '12.09.2026',
+    weddingDate: '2026-09-12T16:00:00',
   },
 
   // Cita/Frase
@@ -147,7 +142,7 @@ export const WEDDING_INFO = {
       title: 'Compartimos este día junto a vos',
       description: 'Compartí tus fotos y videos de ese hermoso día',
       buttonText: 'Ver en Instagram',
-      hashtag: '#Jorge&Yina',
+      hashtag: COUPLE_HASHTAG,
       url: 'https://www.instagram.com/explore/tags/Jorge%26Yina/',
     },
     modals: {

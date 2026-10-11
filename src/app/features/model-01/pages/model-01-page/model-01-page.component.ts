@@ -14,7 +14,7 @@ import { ModalComponent } from '../../../shared/components/common/modal/modal.co
 import { ModalFlowService } from '../../../shared/services/modal-flow.service';
 import { InvitationService } from '../../../shared/services/invitation.service';
 import { InvitationStateService } from '../../../shared/services/invitation-state.service';
-import { shouldShowExpiredInvitationPage } from '../../../shared/utils/confirmation-deadline';
+import { shouldRedirectToExpiredInvitation } from '../../../shared/utils/confirmation-deadline';
 
 @Component({
   selector: 'app-model-01-page',
@@ -67,7 +67,7 @@ export class Model01PageComponent implements OnInit, OnDestroy {
         this.invitationLoadPending = false;
 
         const status = data?.data.invitation.status;
-        if (!this.isPreviewMode && shouldShowExpiredInvitationPage(status)) {
+        if (shouldRedirectToExpiredInvitation(status, this.isPreviewMode)) {
           void this.router.navigate(['/expired'], {
             queryParamsHandling: 'preserve',
             replaceUrl: true,

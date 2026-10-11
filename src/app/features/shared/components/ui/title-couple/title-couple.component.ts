@@ -9,8 +9,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './title-couple.component.css',
 })
 export class TitleCoupleComponent {
-  @Input() name_wife: string = 'Yina';
-  @Input() name_husband: string = 'Jorge';
+  @Input() name_wife = '';
+  @Input() name_husband = '';
   @Input() classHeading1 =
     'text-white text-[100px] md:text-[130px] font-bold flex-col md:flex-row gap-3 md:gap-7';
   @Input() classSpan =

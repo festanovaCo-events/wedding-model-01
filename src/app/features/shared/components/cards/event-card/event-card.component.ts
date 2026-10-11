@@ -21,14 +21,12 @@ const EVENT_CARD_ANIMATIONS: Record<AnimationKey, object> = {
 export class EventCardComponent {
   @Input() titulo!: string;
   @Input() animationKey!: AnimationKey;
-  @Input() date: string = 'Sábado 15 de Mayo - 17hs';
-  @Input() place: string = 'Parroquia Nuestra Señora de Lujan';
-  @Input() address: string = 'Av. Pergamino 203 - Bogotá';
-  @Input() calendarRef: string =
-    'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Jorge+y+Yina+(Ceremonia)&dates=20260912T220000Z/20260912T230000Z&details=¡Acompáñanos+a+celebrar+este+momento+especial!&location=Parroquia+Cristo+Sacerdote+-+Los+Alpes,+Tv.+73,+Los+Alpes,+Cartagena+de+Indias,+Provincia+de+Cartagena,+Bolívar&sf=true&output=xml';
-  @Input() location: string =
-    'Parroquia+Cristo+Sacerdote+-+Los+Alpes,+Cartagena+de+Indias,+Bolívar';
-  @Input() mapsUrl: string = '';
+  @Input() date = '';
+  @Input() place = '';
+  @Input() address = '';
+  @Input() calendarRef = '';
+  @Input() location = '';
+  @Input() mapsUrl = '';
   options!: AnimationOptions;
   animationItem?: AnimationItem;
 

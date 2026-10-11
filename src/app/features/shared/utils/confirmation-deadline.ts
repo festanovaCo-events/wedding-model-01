@@ -12,9 +12,23 @@ export function isConfirmationDeadlinePassed(
 
 export function shouldShowExpiredInvitationPage(
   status: InvitationStatus | undefined,
+  referenceDate: Date = new Date(),
 ): boolean {
+  const deadlinePassed = isConfirmationDeadlinePassed(referenceDate);
   return (
-    (status === 'DECLINED' && isConfirmationDeadlinePassed()) ||
-    (status === 'PENDING' && isConfirmationDeadlinePassed())
+    (status === 'DECLINED' && deadlinePassed) ||
+    (status === 'PENDING' && deadlinePassed)
   );
+}
+
+export function shouldRedirectToExpiredInvitation(
+  status: InvitationStatus | undefined,
+  isPreviewMode: boolean,
+  referenceDate: Date = new Date(),
+): boolean {
+  if (isPreviewMode) {
+    return false;
+  }
+
+  return shouldShowExpiredInvitationPage(status, referenceDate);
 }
