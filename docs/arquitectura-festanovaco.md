@@ -5,7 +5,7 @@ Documentación de intención: qué se quiere construir, por qué, qué se descar
 Repos:
 
 - Shell Next.js: `festanovaco-web` (hermano de este repo, en `d:\Programacion\angular\festanovaco-web`)
-- Invitaciones de boda (Angular): este repo (`wedding-invitation-tmp`)
+- Invitaciones de boda (Angular): este repo (`wedding-model-01`)
 - Invitaciones de cumpleaños (Angular): repo futuro
 
 Dominio público: `festanovaco.com`. Hosting: Vercel.
@@ -86,7 +86,7 @@ El DNS apunta solo al proyecto Next. `/invitations-wedding-model-01` y sus asset
 | Pieza | Repo | Qué sirve | Dónde se publica |
 |-------|------|-----------|------------------|
 | Shell | `festanovaco-web` | `/`, `/wedding`, `/birthday` | Proyecto Vercel **con el dominio** |
-| Bodas | `wedding-invitation-tmp` | SPA de invitación | Otro proyecto Vercel (`WEDDING_APP_URL`) |
+| Bodas | `wedding-model-01` | SPA de invitación | Otro proyecto Vercel (`WEDDING_APP_URL`) |
 | Cumpleaños | futuro | SPA de invitación | Otro proyecto; `BIRTHDAY_APP_URL` |
 
 ### Rutas públicas

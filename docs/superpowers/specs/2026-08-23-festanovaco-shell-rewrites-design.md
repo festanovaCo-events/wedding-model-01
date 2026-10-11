@@ -1,7 +1,7 @@
 # FestanovaCo: shell Next.js + invitaciones Angular (mismo dominio)
 
 Fecha: 2026-08-23  
-Repos: shell Next (nuevo) + este repo Angular de bodas (`wedding-invitation-tmp`)  
+Repos: shell Next (nuevo) + este repo Angular de bodas (`wedding-model-01`)  
 Hosting: Vercel  
 Dominio público: `festanovaco.com`
 

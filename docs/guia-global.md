@@ -1,6 +1,6 @@
 # Guia Global del Proyecto
 
-Esta guia centraliza como levantar, configurar, desarrollar y desplegar el proyecto `wedding-invitation-tmp`. Tambien enlaza las documentaciones especificas para profundizar en entornos, feature flags, cache y sistema de temas.
+Esta guia centraliza como levantar, configurar, desarrollar y desplegar el proyecto `wedding-model-01`. Tambien enlaza las documentaciones especificas para profundizar en entornos, feature flags, cache y sistema de temas.
 
 ## Indice
 
@@ -402,7 +402,7 @@ npm run predeploy
 Esto sirve el contenido de:
 
 ```text
-dist/wedding-invitation-tmp/browser
+dist/wedding-model-01/browser
 ```
 
 en:
@@ -416,7 +416,7 @@ http://localhost:8080/
 El build de produccion queda en:
 
 ```text
-dist/wedding-invitation-tmp/browser
+dist/wedding-model-01/browser
 ```
 
 El proyecto incluye configuraciones de cache para distintas plataformas:
@@ -436,7 +436,7 @@ node scripts/copy-cache-config.js
 Luego despliega el contenido de:
 
 ```text
-dist/wedding-invitation-tmp/browser
+dist/wedding-model-01/browser
 ```
 
 Para mas detalle, revisa [Configuracion de cache para produccion](./cache-config.md).

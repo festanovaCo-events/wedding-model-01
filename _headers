@@ -1,5 +1,5 @@
 # Configuración de headers para Netlify/Vercel
-# Coloca este archivo en la raíz del build (dist/wedding-invitation-tmp/browser)
+# Coloca este archivo en la raíz del build (dist/wedding-model-01/browser)
 
 # Headers por defecto para recursos estáticos
 /*

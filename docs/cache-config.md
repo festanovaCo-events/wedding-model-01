@@ -7,7 +7,7 @@ Este proyecto incluye archivos de configuración para optimizar los tiempos de c
 ### 1. `.htaccess` (Apache)
 Para servidores Apache, copia el archivo `.htaccess` a la raíz de tu servidor web (donde está `index.html`).
 
-**Ubicación:** `dist/wedding-invitation-tmp/browser/.htaccess`
+**Ubicación:** `dist/wedding-model-01/browser/.htaccess`
 
 ### 2. `nginx.conf` (Nginx)
 Para servidores Nginx, incluye esta configuración en tu archivo de sitio o `nginx.conf`.
@@ -17,12 +17,12 @@ Para servidores Nginx, incluye esta configuración en tu archivo de sitio o `ngi
 ### 3. `_headers` (Netlify/Vercel)
 Para Netlify o Vercel, copia el archivo `_headers` a la raíz del build.
 
-**Ubicación:** `dist/wedding-invitation-tmp/browser/_headers`
+**Ubicación:** `dist/wedding-model-01/browser/_headers`
 
 ## 🚀 Configuración por Plataforma
 
 ### Apache
-1. Copia `.htaccess` a `dist/wedding-invitation-tmp/browser/`
+1. Copia `.htaccess` a `dist/wedding-model-01/browser/`
 2. Asegúrate de que `mod_expires` y `mod_headers` estén habilitados:
    ```bash
    sudo a2enmod expires
@@ -39,11 +39,11 @@ Para Netlify o Vercel, copia el archivo `_headers` a la raíz del build.
    ```
 
 ### Netlify
-1. Copia `_headers` a `dist/wedding-invitation-tmp/browser/`
+1. Copia `_headers` a `dist/wedding-model-01/browser/`
 2. El archivo se aplicará automáticamente en el deploy
 
 ### Vercel
-1. Copia `_headers` a `dist/wedding-invitation-tmp/browser/`
+1. Copia `_headers` a `dist/wedding-model-01/browser/`
 2. O crea un archivo `vercel.json` con la configuración de headers
 
 ### Firebase Hosting
@@ -51,7 +51,7 @@ Crea un archivo `firebase.json`:
 ```json
 {
   "hosting": {
-    "public": "dist/wedding-invitation-tmp/browser",
+    "public": "dist/wedding-model-01/browser",
     "headers": [
       {
         "source": "**/*.@(js|css|jpg|jpeg|png|gif|webp|svg|ico|ttf|otf|woff|woff2|mp4|webm)",
@@ -107,7 +107,7 @@ Para desarrollo local, el servidor de Angular (`ng serve`) no permite configurar
 
 Para probar localmente con headers de caché, puedes usar:
 ```bash
-npx http-server dist/wedding-invitation-tmp/browser -p 8080 --cors
+npx http-server dist/wedding-model-01/browser -p 8080 --cors
 ```
 
 Y configurar headers manualmente o usar un servidor como Apache/Nginx localmente.
