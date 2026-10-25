@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { PAGE_COPY } from '../../constants/page-copy';
+import { withPreviewQuery } from '../../utils/invitation-url';
 
 @Component({
   selector: 'app-m01-invitation-card',
@@ -10,11 +12,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrl: './m01-invitation-card.component.css',
 })
 export class M01InvitationCardComponent implements OnChanges {
-  /** URL absoluta de la invitación (con token). Se abre en iframe con preview=1. */
   @Input() invitationUrl = '';
+  pageCopy = PAGE_COPY;
 
   isOpen = false;
-  /** Hasta un clic, una capa tapa el iframe para que el scroll sea de la página. */
   iframeInteractive = false;
   safeIframeUrl: SafeResourceUrl | null = null;
 
@@ -22,7 +23,7 @@ export class M01InvitationCardComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.safeIframeUrl = this.invitationUrl
-      ? this.sanitizer.bypassSecurityTrustResourceUrl(this.buildPreviewUrl(this.invitationUrl))
+      ? this.sanitizer.bypassSecurityTrustResourceUrl(this.previewUrl)
       : null;
   }
 
@@ -38,21 +39,10 @@ export class M01InvitationCardComponent implements OnChanges {
   }
 
   get openInNewTabUrl(): string {
-    return this.buildPreviewUrl(this.invitationUrl);
+    return this.previewUrl;
   }
 
-  private buildPreviewUrl(url: string): string {
-    if (!url) {
-      return '';
-    }
-
-    try {
-      const parsed = new URL(url, window.location.origin);
-      parsed.searchParams.set('preview', '1');
-      return parsed.toString();
-    } catch {
-      const separator = url.includes('?') ? '&' : '?';
-      return `${url}${separator}preview=1`;
-    }
+  private get previewUrl(): string {
+    return withPreviewQuery(this.invitationUrl, window.location.origin);
   }
 }

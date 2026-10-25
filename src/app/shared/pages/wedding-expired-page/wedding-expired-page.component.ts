@@ -4,10 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { M01ExpiredBannerComponent } from '../../components/expired-banner/m01-expired-banner.component';
 import { M01InvitationCardComponent } from '../../components/invitation-card/m01-invitation-card.component';
+import { INVITATION_QUERY } from '../../constants/invitation-query';
+import { PAGE_COPY } from '../../constants/page-copy';
 import { WEDDING_INFO } from '../../constants/wedding-info';
 import { InvitationService } from '../../services/invitation.service';
 import { InvitationStateService } from '../../services/invitation-state.service';
 import { shouldShowExpiredInvitationPage } from '../../utils/confirmation-deadline';
+import { invitationPageUrl } from '../../utils/invitation-url';
 
 @Component({
   selector: 'app-wedding-expired-page',
@@ -17,8 +20,9 @@ import { shouldShowExpiredInvitationPage } from '../../utils/confirmation-deadli
   styleUrl: './wedding-expired-page.component.css',
 })
 export class WeddingExpiredPageComponent implements OnInit, OnDestroy {
+  pageCopy = PAGE_COPY;
   weddingInfo = WEDDING_INFO;
-  inviteeName = 'Invitado';
+  inviteeName: string = PAGE_COPY.messages.fallbackInviteeName;
   invitationUrl = '';
   private routeSubscription?: Subscription;
   private invitationSubscription?: Subscription;
@@ -44,7 +48,7 @@ export class WeddingExpiredPageComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         const invitation = data?.data.invitation;
         if (invitation?.name) {
-          this.inviteeName = invitation.name.split(' ')[0];
+          this.rememberInvitee(invitation.name);
         }
 
         if (invitation && !shouldShowExpiredInvitationPage(invitation.status)) {
@@ -56,10 +60,10 @@ export class WeddingExpiredPageComponent implements OnInit, OnDestroy {
       });
 
     this.routeSubscription = this.route.queryParams.subscribe((params) => {
-      const token = params['token'] as string | undefined;
+      const token = params[INVITATION_QUERY.token] as string | undefined;
 
       if (token) {
-        this.invitationUrl = `${window.location.origin}/invitations-wedding-model-01?token=${encodeURIComponent(token)}`;
+        this.invitationUrl = invitationPageUrl(window.location.origin, token);
         this.loadInvitation(token);
         return;
       }
@@ -67,9 +71,9 @@ export class WeddingExpiredPageComponent implements OnInit, OnDestroy {
       const existing = this.invitationStateService.getInvitationData();
       const existingToken = existing?.data.invitation.token;
       if (existingToken) {
-        this.invitationUrl = `${window.location.origin}/invitations-wedding-model-01?token=${encodeURIComponent(existingToken)}`;
+        this.invitationUrl = invitationPageUrl(window.location.origin, existingToken);
         if (existing?.data.invitation.name) {
-          this.inviteeName = existing.data.invitation.name.split(' ')[0];
+          this.rememberInvitee(existing.data.invitation.name);
         }
       }
     });
@@ -78,6 +82,10 @@ export class WeddingExpiredPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
     this.invitationSubscription?.unsubscribe();
+  }
+
+  private rememberInvitee(name: string): void {
+    this.inviteeName = name.split(' ')[0];
   }
 
   private loadInvitation(token: string): void {
@@ -93,7 +101,7 @@ export class WeddingExpiredPageComponent implements OnInit, OnDestroy {
         this.invitationStateService.setLoading(false);
       },
       error: () => {
-        this.invitationStateService.setError('Error al cargar los datos de la invitación');
+        this.invitationStateService.setError(PAGE_COPY.messages.loadError);
         this.invitationStateService.setLoading(false);
       },
     });

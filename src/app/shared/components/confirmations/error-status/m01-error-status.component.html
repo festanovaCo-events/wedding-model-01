@@ -7,12 +7,12 @@
         </svg>
     </div>
     <h2 class="text-heading font-bold text-xl md:text-2xl lg:text-3xl text-center font-cookie">
-        Oops, algo salió mal
+        {{ pageCopy.error.title }}
     </h2>
     <p class="text-theme-text text-sm md:text-base lg:text-lg text-center max-w-md">
-        No pudimos cargar tu información de invitación en este momento.
+        {{ pageCopy.error.body }}
     </p>
     <p class="text-primary-soft text-xs md:text-sm text-center max-w-md mt-2">
-        Por favor, intenta recargar la página o contacta con el organizador del evento.
+        {{ pageCopy.error.hint }}
     </p>
 </div>

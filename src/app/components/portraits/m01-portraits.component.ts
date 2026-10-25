@@ -1,13 +1,16 @@
-import { Component, OnDestroy, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { Fancybox } from '@fancyapps/ui';
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 import { ScriptLoaderService } from '../../shared/services/script-loader.service';
 import { ACTIVE_THEME } from '../../shared/themes/active-theme';
+import { fillCopy } from '../../shared/utils/fill-copy';
+import { observeOnceVisible } from '../../shared/utils/observe-once-visible';
 
 @Component({
   selector: 'app-m01-portraits',
@@ -16,10 +19,10 @@ import { ACTIVE_THEME } from '../../shared/themes/active-theme';
   templateUrl: './m01-portraits.component.html',
   styleUrl: './m01-portraits.component.css',
 })
-export class M01PortraitsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class M01PortraitsComponent implements OnInit, OnDestroy {
   @ViewChild('lottieContainer', { static: false }) lottieContainer!: ElementRef;
 
-  weddingInfo = WEDDING_INFO;
+  pageCopy = PAGE_COPY;
   images = WEDDING_INFO.assets.portraits;
   private observer: IntersectionObserver | null = null;
   shouldLoadAnimation = false;
@@ -71,7 +74,9 @@ export class M01PortraitsComponent implements OnInit, OnDestroy, AfterViewInit {
       setTimeout(() => this.bindFancybox(), 0);
     });
     setTimeout(() => {
-      this.setupIntersectionObserver();
+      this.observer = observeOnceVisible(this.lottieContainer?.nativeElement, () => {
+        this.shouldLoadAnimation = true;
+      });
     }, 0);
   }
 
@@ -89,32 +94,11 @@ export class M01PortraitsComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  private setupIntersectionObserver(): void {
-    if (!this.lottieContainer?.nativeElement || !('IntersectionObserver' in window)) {
-      this.shouldLoadAnimation = true;
-      return;
-    }
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.shouldLoadAnimation = true;
-            this.observer?.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: '50px',
-        threshold: 0.1
-      }
-    );
-
-    this.observer.observe(this.lottieContainer.nativeElement);
-  }
-
-  ngAfterViewInit() {
-    // Fancybox se enlaza en bindFancybox() tras cargar scripts
+  portraitAlt(index: number): string {
+    return fillCopy(this.pageCopy.portraits.alt, {
+      index: index + 1,
+      total: this.images.length,
+    });
   }
 
   animationCreated(animationItem: AnimationItem): void {

@@ -10,17 +10,17 @@
       </div>
 
       <p class="text-xs tracking-[0.25em] uppercase text-accent">
-        Invitación de boda
+        {{ pageCopy.expired.eyebrow }}
       </p>
 
       <h1 class="font-cookie text-4xl md:text-5xl text-heading leading-snug">
-        Hola, {{ inviteeName }}
+        {{ pageCopy.expired.greeting }} {{ inviteeName }}
       </h1>
 
       <p class="text-sm text-theme-text max-w-sm leading-relaxed">
-        Tienes una invitación pendiente para la boda de
+        {{ pageCopy.expired.introBefore }}
         <span class="font-semibold text-heading">{{ coupleName }}</span>.
-        Sin embargo, hay algo importante que debes saber.
+        {{ pageCopy.expired.introAfter }}
       </p>
     </header>
 
@@ -28,29 +28,13 @@
 
     <div class="rounded-2xl bg-white border border-theme-border px-6 py-5 flex flex-col gap-3">
       <h2 class="font-cookie text-2xl text-heading">
-        ¿Qué significa esto?
+        {{ pageCopy.expired.meaningTitle }}
       </h2>
       <ul class="flex flex-col gap-2 text-sm text-theme-text leading-relaxed list-none m-0 p-0">
-        <li class="flex items-start gap-2.5">
+        <li *ngFor="let point of pageCopy.expired.points" class="flex items-start gap-2.5">
           <span aria-hidden="true" class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           <span>
-            Tu lugar en la lista de invitados
-            <strong class="text-heading font-semibold">ya no está reservado</strong>
-            para esta celebración.
-          </span>
-        </li>
-        <li class="flex items-start gap-2.5">
-          <span aria-hidden="true" class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
-          <span>
-            Los novios han confirmado los arreglos finales con base en los RSVPs recibidos a tiempo.
-          </span>
-        </li>
-        <li class="flex items-start gap-2.5">
-          <span aria-hidden="true" class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
-          <span>
-            Si crees que hay un error,
-            <strong class="text-heading font-semibold">comunícate directamente</strong>
-            con los novios.
+            {{ point.before }}<strong *ngIf="point.emphasis" class="text-heading font-semibold">{{ point.emphasis }}</strong>{{ point.after }}
           </span>
         </li>
       </ul>
@@ -60,8 +44,7 @@
 
     <footer class="text-center">
       <p class="text-xs text-muted leading-relaxed max-w-md mx-auto">
-        Puedes seguir viendo la invitación como recuerdo, pero recuerda que ya no
-        estás confirmado para asistir. Si tienes dudas, contacta a los novios.
+        {{ pageCopy.expired.footnote }}
       </p>
     </footer>
   </div>

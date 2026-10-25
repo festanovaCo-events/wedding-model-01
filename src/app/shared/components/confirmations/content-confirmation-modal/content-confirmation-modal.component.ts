@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import {
+  CONFIRMATION_STEP_DELAY_MS,
+  CONFIRMATION_TOAST_CLOSE_DELAY_MS,
+  CONFIRMATION_TOAST_OPTIONS,
+} from '../../../constants/confirmation-flow';
+import { PAGE_COPY } from '../../../constants/page-copy';
 import { InvitationStateService } from '../../../services/invitation-state.service';
 import { InvitationService } from '../../../services/invitation.service';
+import { fillCopy } from '../../../utils/fill-copy';
+import { partialQuotasMessage } from '../../../utils/partial-quotas-message';
 import { ConfirmAlertComponent } from '../../common/confirm-alert/confirm-alert.component';
-
-export const CONFIRMATION_STEP_DELAY_MS = 1500;
 
 @Component({
   selector: 'app-content-confirmation-modal',
@@ -18,6 +24,7 @@ export const CONFIRMATION_STEP_DELAY_MS = 1500;
 })
 export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
   @Output() closeModal = new EventEmitter<void>();
+  copy = PAGE_COPY.rsvp;
   
   currentStep:
     | 'confirmation'
@@ -111,42 +118,27 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
 
   confirmDecline() {
     if (!this.token) {
-      this.toastr.error('Error: No se encontró la información de la invitación', '', {
-        timeOut: 5000,
-        positionClass: 'toast-top-right',
-        closeButton: true,
-        progressBar: true,
-      });
+      this.notify('error', PAGE_COPY.messages.toasts.missingInvitation);
       return;
     }
 
     this.currentStep = 'loading';
 
     this.invitationService.declineInvitation(this.token).subscribe({
-      next: (response) => {
+      next: () => {
         this.reloadInvitationData();
         
         this.reset();
         this.closeModal.emit();
         
         setTimeout(() => {
-          this.toastr.info('Lamentamos que no puedas asistir. ¡Esperamos verte en otra ocasión!', '', {
-            timeOut: 5000,
-            positionClass: 'toast-top-right',
-            closeButton: true,
-            progressBar: true,
-          });
-        }, 300);
+          this.notify('info', PAGE_COPY.messages.toasts.declined);
+        }, CONFIRMATION_TOAST_CLOSE_DELAY_MS);
       },
       error: (error) => {
         console.error('Error al rechazar la invitación:', error);
         this.currentStep = 'decline-confirmation';
-        this.toastr.error('Error al rechazar la invitación. Por favor, intenta nuevamente.', '', {
-          timeOut: 5000,
-          positionClass: 'toast-top-right',
-          closeButton: true,
-          progressBar: true,
-        });
+        this.notify('error', PAGE_COPY.messages.toasts.declineFailed);
       }
     });
   }
@@ -194,17 +186,27 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
   }
 
   get partialQuotasMessage(): string {
-    return `Solo estás registrando ${this.listName.length} de ${this.maximumQuotas} cupos.`;
+    return partialQuotasMessage(this.listName.length, this.maximumQuotas);
+  }
+
+  get welcomeLabel(): string {
+    return fillCopy(this.copy.welcome, { name: this.hostName });
+  }
+
+  get guestListLabel(): string {
+    return fillCopy(this.copy.guestList, {
+      count: this.listName.length,
+      maximum: this.maximumQuotas,
+    });
+  }
+
+  get maximumGuestsLabel(): string {
+    return fillCopy(this.copy.maximumGuests, { maximum: this.maximumQuotas });
   }
 
   send() {
     if (!this.token) {
-      this.toastr.error('Error: No se encontró la información de la invitación', '', {
-        timeOut: 5000,
-        positionClass: 'toast-top-right',
-        closeButton: true,
-        progressBar: true,
-      });
+      this.notify('error', PAGE_COPY.messages.toasts.missingInvitation);
       return;
     }
 
@@ -214,31 +216,21 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
     const guestNames = [...this.listName];
 
     this.invitationService.acceptInvitation(this.token, guestNames).subscribe({
-      next: (response) => {
+      next: () => {
         this.reloadInvitationData();
         
         this.reset();
         this.closeModal.emit();
         
         setTimeout(() => {
-          this.toastr.success('¡Felicidades! Has sido agendado', '', {
-            timeOut: 5000,
-            positionClass: 'toast-top-right',
-            closeButton: true,
-            progressBar: true,
-          });
-        }, 300);
+          this.notify('success', PAGE_COPY.messages.toasts.accepted);
+        }, CONFIRMATION_TOAST_CLOSE_DELAY_MS);
       },
       error: (error) => {
         console.error('Error al aceptar la invitación:', error);
         this.currentStep = 'guests';
         this.registrationSent = false;
-        this.toastr.error('Error al enviar la confirmación. Por favor, intenta nuevamente.', '', {
-          timeOut: 5000,
-          positionClass: 'toast-top-right',
-          closeButton: true,
-          progressBar: true,
-        });
+        this.notify('error', PAGE_COPY.messages.toasts.acceptFailed);
       }
     });
   }
@@ -254,5 +246,23 @@ export class ContentConfirmationModalComponent implements OnInit, OnDestroy {
   onClose() {
     this.reset();
     this.closeModal.emit();
+  }
+
+  private notify(kind: 'error' | 'info' | 'success', message: string): void {
+    switch (kind) {
+      case 'error':
+        this.toastr.error(message, '', CONFIRMATION_TOAST_OPTIONS);
+        return;
+      case 'info':
+        this.toastr.info(message, '', CONFIRMATION_TOAST_OPTIONS);
+        return;
+      case 'success':
+        this.toastr.success(message, '', CONFIRMATION_TOAST_OPTIONS);
+        return;
+      default: {
+        const exhaustive: never = kind;
+        return exhaustive;
+      }
+    }
   }
 }

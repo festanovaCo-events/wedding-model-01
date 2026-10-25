@@ -1,12 +1,11 @@
+/// <reference types="jasmine" />
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { ToastrService } from 'ngx-toastr';
 import { InvitationInfoResponse } from '../../../interfaces/invitation.interface';
 import { InvitationService } from '../../../services/invitation.service';
 import { InvitationStateService } from '../../../services/invitation-state.service';
-import {
-  CONFIRMATION_STEP_DELAY_MS,
-  ContentConfirmationModalComponent,
-} from './content-confirmation-modal.component';
+import { CONFIRMATION_STEP_DELAY_MS } from '../../../constants/confirmation-flow';
+import { ContentConfirmationModalComponent } from './content-confirmation-modal.component';
 
 function invitationWithSeats(availableSeats: number): InvitationInfoResponse {
   return {

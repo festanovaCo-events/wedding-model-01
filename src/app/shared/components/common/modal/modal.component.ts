@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PAGE_COPY } from '../../../constants/page-copy';
 
 @Component({
   selector: 'app-modal',
@@ -9,6 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './modal.component.css',
 })
 export class ModalComponent {
+  pageCopy = PAGE_COPY;
   @Input() show = false;
   @Output() close = new EventEmitter<void>();
 

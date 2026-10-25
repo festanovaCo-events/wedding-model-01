@@ -1,0 +1,72 @@
+---
+description: Los componentes solo pintan. Interfaces, constantes, datos y utilidades viven fuera. Sin barrels ni magic strings.
+globs: src/**/*.ts
+alwaysApply: true
+---
+
+# Límites del componente
+
+Un archivo de componente (`src/app/components/`, `src/app/shared/components/`) exporta el componente y nada más. Si el archivo necesita un tipo, una constante, un texto fijo o una función, ese archivo no es su sitio.
+
+## Dónde va cada cosa
+
+- Interfaces y tipos: `src/app/shared/interfaces/`.
+- Constantes (números, claves, límites, flags): `src/app/shared/constants/` (`FEATURE_FLAGS`, `API_ROUTES`, `API_MOCK_FLAGS`).
+- Datos de la boda (nombres, fechas, plazo, lugares, assets): `WEDDING_INFO` en `src/app/shared/constants/wedding-info.ts`.
+- Textos que arman la página: `PAGE_COPY` en `src/app/shared/constants/page-copy.ts`. El componente los usa; no los redeclara.
+- Tema visual (paleta, assets, animaciones): `ACTIVE_THEME` en `src/app/shared/themes/`.
+- Utilidades (funciones puras, mapeos, formato, plazo): `src/app/shared/utils/`.
+- Rutas de la app: `src/app/app.routes.ts`. Rutas del API, teléfono, correo y anclas: `API_ROUTES` y `WEDDING_INFO`. No se reescriben dentro del componente.
+- El único acceso al API es `InvitationService`. El componente no arma URLs ni elige mock o real.
+
+No uses `src/app/features/`. Esa carpeta no existe en este modelo.
+
+## Magic strings
+
+Una ruta, un `id` de sección, un teléfono, un correo o una clave de almacenamiento salen de `WEDDING_INFO`, `API_ROUTES` o el módulo de constantes que ya los define. Una clase de Tailwind y el texto que llega por input no son magic strings.
+
+## Sin barrels
+
+No crees `index.ts` que reexporte la carpeta. Importa el archivo que define el símbolo:
+
+```ts
+import { M01GiftsComponent } from './components/gifts/m01-gifts.component';
+```
+
+Así no:
+
+```ts
+import { M01GiftsComponent } from './components/gifts';
+```
+
+## Ejemplo
+
+El componente no declara el tipo, la constante, la utilidad ni la ruta:
+
+```ts
+const MESSAGE = 'Hola';
+interface CardProps { title: string; }
+function labelOf(title: string) { return title; }
+
+export class CardComponent {
+  href = '/expired';
+  label = labelOf(MESSAGE);
+}
+```
+
+Eso vive al lado y el componente solo lo usa:
+
+```ts
+import { WEDDING_INFO } from '../../shared/constants/wedding-info';
+import type { CardProps } from '../../shared/interfaces/card.interface';
+import { labelOf } from '../../shared/utils/label';
+
+export class CardComponent {
+  title = '';
+  weddingInfo = WEDDING_INFO;
+
+  label(): string {
+    return labelOf(this.title || WEDDING_INFO.couple.displayName);
+  }
+}
+```

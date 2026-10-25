@@ -2,8 +2,10 @@ import { Component, ElementRef, OnInit, OnDestroy, ViewChild } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 import { ACTIVE_THEME } from '../../shared/themes/active-theme';
+import { observeOnceVisible } from '../../shared/utils/observe-once-visible';
 
 @Component({
   selector: 'app-m01-banner-instagram',
@@ -17,14 +19,10 @@ export class M01BannerInstagramComponent implements OnInit, OnDestroy {
   
   private animationItem: AnimationItem | undefined;
   private observer: IntersectionObserver | null = null;
+  pageCopy = PAGE_COPY;
   weddingInfo = WEDDING_INFO;
   shouldLoadAnimation = false;
 
-  get instagramHashtagUrl(): string {
-    const tag = this.weddingInfo.sections.instagram.hashtag.replace('#', '');
-    return `https://www.instagram.com/explore/tags/${encodeURIComponent(tag)}/`;
-  }
-  
   options: AnimationOptions = {
     animationData: ACTIVE_THEME.animations.instagram,
     loop: true,
@@ -33,32 +31,10 @@ export class M01BannerInstagramComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.setupIntersectionObserver();
+      this.observer = observeOnceVisible(this.lottieContainer?.nativeElement, () => {
+        this.shouldLoadAnimation = true;
+      });
     }, 0);
-  }
-
-  private setupIntersectionObserver(): void {
-    if (!this.lottieContainer?.nativeElement || !('IntersectionObserver' in window)) {
-      this.shouldLoadAnimation = true;
-      return;
-    }
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.shouldLoadAnimation = true;
-            this.observer?.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: '50px',
-        threshold: 0.1
-      }
-    );
-
-    this.observer.observe(this.lottieContainer.nativeElement);
   }
 
   animationCreated(animationItem: AnimationItem): void {

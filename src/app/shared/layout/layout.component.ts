@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { LoaderHeartComponent } from '../components/common/entrances/loader-heart/loader-heart.component';
 import { SplashMusicComponent } from '../components/ui/lottie/splash-music/splash-music.component';
 import { FooterComponent } from '../components/common/footer/footer.component';
+import { PAGE_COPY } from '../constants/page-copy';
 import { WEDDING_INFO } from '../constants/wedding-info';
 import { ModalFlowService } from '../services/modal-flow.service';
 
@@ -40,6 +41,7 @@ export class LayoutComponent implements OnInit {
   modalDismissed = false;
   showContent = false;
   bounce = false;
+  pageCopy = PAGE_COPY;
   weddingInfo = WEDDING_INFO;
 
   private audio: HTMLAudioElement | null = null;

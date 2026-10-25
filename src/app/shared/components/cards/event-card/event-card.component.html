@@ -13,30 +13,30 @@
   </div>
 
   <div class="flex flex-col justify-center items-center gap-2">
-    <h4 class="text-heading font-bold text-[25px]">Día</h4>
+    <h4 class="text-heading font-bold text-[25px]">{{ labels.day }}</h4>
     <p class="text-theme-text font-normal text-base md:text-xl">{{ date }}</p>
 
     <a [href]="calendarRef" target="_blank" rel="noopener noreferrer"
       class="mt-4 bg-white text-theme-text text-center font-bold rounded-[50px] text-[15px] py-[13px] px-[30px]
       shadow-[0px_0px_5px_-1px_rgba(0,0,0,0.40)] transition-all hover:bg-primary hover:text-white leading-[15px] inline-block cursor-pointer">
-      Agendar
+      {{ labels.schedule }}
     </a>
   </div>
 
   <div class="flex flex-col justify-center items-center gap-2">
-    <h4 class="text-heading font-bold text-[25px]">Lugar</h4>
+    <h4 class="text-heading font-bold text-[25px]">{{ labels.place }}</h4>
     <p class="text-theme-text font-normal text-base md:text-xl">{{ place }}</p>
   </div>
 
   <div class="flex flex-col justify-center items-center gap-2">
-    <h4 class="text-heading font-bold text-[25px]">Dirección</h4>
+    <h4 class="text-heading font-bold text-[25px]">{{ labels.address }}</h4>
     <p class="text-theme-text font-normal text-base md:text-xl">{{ address }}</p>
 
-    <a [href]="mapsUrl || 'https://www.google.com/maps/search/?api=1&query=' + location" target="_blank"
+    <a [href]="mapsHref" target="_blank"
       rel="noopener noreferrer"
       class="mt-4 bg-white text-theme-text text-center font-bold rounded-[50px] text-[15px] py-[13px] px-[30px]
       shadow-[0px_0px_5px_-1px_rgba(0,0,0,0.40)] transition-all hover:bg-primary hover:text-white leading-[15px] inline-block cursor-pointer">
-      ¿Cómo llegar?
+      {{ labels.directions }}
     </a>
   </div>
 </div>

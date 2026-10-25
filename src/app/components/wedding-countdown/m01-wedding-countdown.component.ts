@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 import { ACTIVE_THEME } from '../../shared/themes/active-theme';
 
@@ -14,7 +15,7 @@ import { ACTIVE_THEME } from '../../shared/themes/active-theme';
 })
 export class M01WeddingCountdownComponent implements OnInit, OnDestroy {
   private animationItem: AnimationItem | undefined;
-  weddingInfo = WEDDING_INFO;
+  pageCopy = PAGE_COPY;
 
   options: AnimationOptions = {
     animationData: ACTIVE_THEME.animations.heartPulse,
