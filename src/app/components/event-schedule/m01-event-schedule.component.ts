@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EventCardComponent } from '../../shared/components/cards/event-card/event-card.component';
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 
 @Component({
@@ -11,5 +12,6 @@ import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 })
 
 export class M01EventScheduleComponent {
+  pageCopy = PAGE_COPY;
   weddingInfo = WEDDING_INFO;
 }

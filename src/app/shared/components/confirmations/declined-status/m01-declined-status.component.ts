@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PAGE_COPY } from '../../../constants/page-copy';
 
 @Component({
   selector: 'app-m01-declined-status',
@@ -9,4 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './m01-declined-status.component.css',
 })
 export class M01DeclinedStatusComponent {
+  pageCopy = PAGE_COPY;
 }

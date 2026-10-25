@@ -3,7 +3,7 @@ import { ACTIVE_THEME } from '../themes/active-theme';
 const COUPLE_HASHTAG = '#Jorge&Yina';
 
 /**
- * Fuente única de textos, fechas y plazo de esta boda.
+ * Datos de esta boda: nombres, fechas, plazo, lugares y assets. Los textos de la página están en PAGE_COPY.
  */
 export const WEDDING_INFO = {
   // Información de la pareja
@@ -39,6 +39,7 @@ export const WEDDING_INFO = {
   events: {
     ceremony: {
       title: 'Ceremonia',
+      animationKey: 'rings' as const,
       place: 'Parroquia Cristo Sacerdote - Los Alpes',
       address: 'Tv. 73, Los Alpes, Cartagena de Indias, Bolívar',
       location: 'Tv.+73,+Los+Alpes,+Cartagena+de+Indias,+Bolívar',
@@ -51,6 +52,7 @@ export const WEDDING_INFO = {
     },
     party: {
       title: 'Fiesta',
+      animationKey: 'party' as const,
       place: 'Los Alpes Social Hall',
       address: 'Tv. 74 #31C-59, Los Alpes, Cartagena de Indias, Bolívar',
       location: 'Tv.+74+%2331C-59,+Los+Alpes,+Cartagena+de+Indias,+Bolívar',
@@ -129,55 +131,5 @@ export const WEDDING_INFO = {
     tips: ACTIVE_THEME.animations.tips,
     rings: ACTIVE_THEME.animations.rings,
     party: ACTIVE_THEME.animations.party,
-  },
-
-  // Textos de secciones
-  sections: {
-    gifts: {
-      title: 'Lluvia de sobres',
-      description:
-        'Sus buenos deseos son suficientes para nosotros y en caso de querer hacernos un regalito, este puede ser en efectivo',
-    },
-    instagram: {
-      title: 'Compartimos este día junto a vos',
-      description: 'Compartí tus fotos y videos de ese hermoso día',
-      buttonText: 'Ver en Instagram',
-      hashtag: COUPLE_HASHTAG,
-      url: 'https://www.instagram.com/explore/tags/Jorge%26Yina/',
-    },
-    modals: {
-      dressCode: {
-        title: 'Elegante formal',
-        description:
-          'Queremos que cada uno de ustedes se sienta especial y luzca espectacular en nuestro dia tan especial.',
-      },
-      tipsAndNotes: {
-        title: 'Tips y Notas',
-        description:
-          'Se reserva el color blanco (en todas sus tonalidades) para el vestido de novia. No olvides confirmar tu asistencia.',
-      },
-    },
-    instructions: {
-      cards: [
-        {
-          title: 'Música',
-          description: 'Una orientación para<br />tu vestuario',
-          path: 'assets/animations/sounds.json',
-          label: 'Sugerir canción',
-        },
-        {
-          title: 'Vestuario',
-          description: 'Una orientación para<br />tu vestuario',
-          path: 'assets/animations/dress.json',
-          label: 'Ver más',
-        },
-        {
-          title: 'Tips y Notas',
-          description: 'Una orientación para<br />tu vestuario',
-          path: 'assets/animations/tips.json',
-          label: 'Información',
-        },
-      ],
-    },
   },
 } as const;

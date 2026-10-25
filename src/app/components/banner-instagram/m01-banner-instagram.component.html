@@ -2,10 +2,10 @@
     <div class="flex flex-col text-center justify-center items-center z-999 relative">
         <h2
             class="font-cookie text-white text-[40px] md:text-6xl leading-10 md:leading-[60px] mb-0 px-10 drop-shadow-lg">
-            {{ weddingInfo.sections.instagram.title }}
+            {{ pageCopy.instagram.title }}
         </h2>
         <p class="text-white text-base md:text-xl font-normal px-[15px] mt-5 md:mt-0 drop-shadow-lg">
-            {{ weddingInfo.sections.instagram.description }}
+            {{ pageCopy.instagram.description }}
         </p>
 
         <div #lottieContainer class="flex justify-center items-center h-28 w-[105px] my-3">
@@ -13,14 +13,14 @@
                 (animationCreated)="animationCreated($event)"></ng-lottie>
         </div>
 
-        <a [href]="instagramHashtagUrl"
+        <a [href]="pageCopy.instagram.url"
             target="_blank" rel="noopener noreferrer"
             class="text-white lowercase text-[40px] md:text-[55px] font-normal mb-10 drop-shadow-lg">{{
-            weddingInfo.sections.instagram.hashtag }}</a>
+            pageCopy.instagram.hashtag }}</a>
 
-        <a [href]="instagramHashtagUrl" target="_blank" rel="noopener noreferrer" class="w-auto bg-white text-center hover:text-white hover:bg-primary
+        <a [href]="pageCopy.instagram.url" target="_blank" rel="noopener noreferrer" class="w-auto bg-white text-center hover:text-white hover:bg-primary
                      text-theme-text uppercase leading-[15px] text-[15px] rounded-[50px] px-[30px] py-[13px] 
-                     transition-all shadow-md font-bold cursor-pointer">{{ weddingInfo.sections.instagram.buttonText
+                     transition-all shadow-md font-bold cursor-pointer">{{ pageCopy.instagram.buttonText
             }}</a>
     </div>
 </section>

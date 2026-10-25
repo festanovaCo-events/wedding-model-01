@@ -8,6 +8,7 @@ import { M01ConfirmationStatusComponent } from '../../shared/components/confirma
 import { M01DeclinedStatusComponent } from '../../shared/components/confirmations/declined-status/m01-declined-status.component';
 import { M01ErrorStatusComponent } from '../../shared/components/confirmations/error-status/m01-error-status.component';
 import { FEATURE_FLAGS as FLAGS } from '../../shared/constants/feature-flags';
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 import { InvitationStateService } from '../../shared/services/invitation-state.service';
 import { ModalFlowService } from '../../shared/services/modal-flow.service';
@@ -33,6 +34,7 @@ export class M01ConfirmationsComponent implements OnInit, OnDestroy {
   
   isModalVisible = false;
   FEATURE_FLAGS = FLAGS;
+  pageCopy = PAGE_COPY;
   weddingInfo = WEDDING_INFO;
   invitationData: InvitationInfoResponse | null = null;
   isConfirmed = false;

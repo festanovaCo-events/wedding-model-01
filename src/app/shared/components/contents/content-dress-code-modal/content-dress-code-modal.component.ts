@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WEDDING_INFO } from '../../../constants/wedding-info';
+import { PAGE_COPY } from '../../../constants/page-copy';
 
 @Component({
   selector: 'app-content-dress-code-modal',
@@ -10,5 +10,5 @@ import { WEDDING_INFO } from '../../../constants/wedding-info';
   styleUrl: './content-dress-code-modal.component.css',
 })
 export class ContentDressCodeModalComponent {
-  dressCodeContent = WEDDING_INFO.sections.modals.dressCode.description;
+  dressCodeContent = PAGE_COPY.modals.dressCode.description;
 }

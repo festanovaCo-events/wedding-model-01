@@ -3,12 +3,10 @@
   [ngStyle]="{'background-image': weddingInfo.assets.bannerImage ? 'url(' + weddingInfo.assets.bannerImage + ')' : 'none'}">
   <video #bgVideo *ngIf="weddingInfo.assets.bannerVideo" muted [muted]="true" playsinline autoplay loop
     preload="metadata" class="absolute inset-0 w-full h-full object-cover z-0" aria-hidden="true" role="presentation"
-    aria-label="Video decorativo de fondo sin audio. Este video es puramente visual y no contiene información esencial.">
+    [attr.aria-label]="pageCopy.banner.videoLabel">
     <source [src]="weddingInfo.assets.bannerVideo" type="video/mp4" />
     <p class="sr-only">
-      Tu navegador no soporta la reproducción de video HTML5. Este video es decorativo, no contiene audio,
-      y no afecta la funcionalidad ni la accesibilidad del sitio. El contenido principal está disponible
-      en el resto de la página.
+      {{ pageCopy.banner.videoFallback }}
     </p>
   </video>
 

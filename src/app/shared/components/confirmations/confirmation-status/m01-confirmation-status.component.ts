@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PAGE_COPY } from '../../../constants/page-copy';
 import { InvitationInfoResponse } from '../../../interfaces/invitation.interface';
 
 @Component({
@@ -11,6 +12,7 @@ import { InvitationInfoResponse } from '../../../interfaces/invitation.interface
 })
 export class M01ConfirmationStatusComponent {
   @Input() invitationData: InvitationInfoResponse | null = null;
+  pageCopy = PAGE_COPY;
 
   get confirmedGuestNames(): string[] {
     if (!this.invitationData) {

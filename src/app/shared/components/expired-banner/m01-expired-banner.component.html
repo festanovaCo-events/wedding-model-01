@@ -10,21 +10,21 @@
 
   <div class="flex-1 min-w-0">
     <p class="font-cookie text-xl md:text-2xl text-heading leading-snug">
-      La fecha límite para confirmar tu asistencia ya pasó
+      {{ pageCopy.expired.bannerTitle }}
     </p>
     <p class="mt-1 text-sm text-theme-text leading-relaxed">
-      El plazo para aceptar esta invitación venció el
+      {{ pageCopy.expired.bannerBefore }}
       <span class="font-semibold text-heading">{{ deadline }}</span>.
-      Ya no estás registrado como asistente confirmado.
+      {{ pageCopy.expired.bannerAfter }}
     </p>
   </div>
 
-  <div role="status" aria-label="No confirmado"
+  <div role="status" [attr.aria-label]="pageCopy.expired.status"
     class="shrink-0 flex items-center gap-1.5 bg-white border border-primary/25 text-primary text-xs font-semibold px-3 py-1.5 rounded-full">
     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
     </svg>
-    No confirmado
+    {{ pageCopy.expired.status }}
   </div>
 </div>

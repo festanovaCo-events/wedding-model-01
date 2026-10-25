@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WEDDING_INFO } from '../../../constants/wedding-info';
+import { PAGE_COPY } from '../../../constants/page-copy';
 
 @Component({
   selector: 'app-content-tips-modal',
@@ -10,5 +10,5 @@ import { WEDDING_INFO } from '../../../constants/wedding-info';
   styleUrl: './content-tips-modal.component.css',
 })
 export class ContentTipsModalComponent {
-  tipsContent = WEDDING_INFO.sections.modals.tipsAndNotes.description;
+  tipsContent = PAGE_COPY.modals.tipsAndNotes.description;
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PAGE_COPY } from '../../../constants/page-copy';
 
 @Component({
   selector: 'app-footer',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  pageCopy = PAGE_COPY;
 }

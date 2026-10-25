@@ -7,10 +7,10 @@
         </svg>
     </div>
     <h2 class="text-heading font-bold text-xl md:text-2xl lg:text-3xl text-center font-cookie">
-        ¡Ya confirmaste tu asistencia!
+        {{ pageCopy.accepted.title }}
     </h2>
     <p class="text-theme-text text-sm md:text-base lg:text-lg text-center max-w-md">
-        Estamos emocionados de celebrar contigo este día especial.
+        {{ pageCopy.accepted.body }}
     </p>
 
     <div *ngIf="confirmedGuestNames.length > 0" class="mt-4 flex flex-col items-center gap-3 w-full max-w-xs">
@@ -19,7 +19,7 @@
             {{ confirmedGuestNames.length }}
         </div>
         <h3 class="text-heading font-bold text-base md:text-lg uppercase tracking-wider">
-            Invitados
+            {{ pageCopy.accepted.guests }}
         </h3>
         <ul class="flex flex-col gap-2 w-full">
             <li *ngFor="let name of confirmedGuestNames"

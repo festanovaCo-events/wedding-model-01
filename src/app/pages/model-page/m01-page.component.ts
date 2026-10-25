@@ -14,7 +14,10 @@ import { ModalComponent } from '../../shared/components/common/modal/modal.compo
 import { ModalFlowService } from '../../shared/services/modal-flow.service';
 import { InvitationService } from '../../shared/services/invitation.service';
 import { InvitationStateService } from '../../shared/services/invitation-state.service';
+import { INVITATION_QUERY, CONFIRMATION_GUIDE_STORAGE_KEY } from '../../shared/constants/invitation-query';
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { shouldRedirectToExpiredInvitation } from '../../shared/utils/confirmation-deadline';
+import { isPreviewMode } from '../../shared/utils/invitation-url';
 
 @Component({
   selector: 'app-m01-page',
@@ -34,8 +37,8 @@ import { shouldRedirectToExpiredInvitation } from '../../shared/utils/confirmati
   templateUrl: './m01-page.component.html',
 })
 export class M01PageComponent implements OnInit, OnDestroy {
+  pageCopy = PAGE_COPY;
   showConfirmationGuide = false;
-  private readonly STORAGE_KEY = 'confirmation_guide_shown';
   private welcomeAccepted = false;
   private invitationLoadPending = false;
   private isPreviewMode = false;
@@ -87,7 +90,7 @@ export class M01PageComponent implements OnInit, OnDestroy {
   }
 
   private shouldShowConfirmationGuide(): boolean {
-    if (localStorage.getItem(this.STORAGE_KEY)) {
+    if (localStorage.getItem(CONFIRMATION_GUIDE_STORAGE_KEY)) {
       return false;
     }
 
@@ -110,13 +113,13 @@ export class M01PageComponent implements OnInit, OnDestroy {
 
   private dismissConfirmationGuide(): void {
     this.showConfirmationGuide = false;
-    localStorage.setItem(this.STORAGE_KEY, 'true');
+    localStorage.setItem(CONFIRMATION_GUIDE_STORAGE_KEY, 'true');
   }
 
   private loadInvitationData(): void {
     this.routeSubscription = this.route.queryParams.subscribe((params) => {
-      this.isPreviewMode = params['preview'] === '1';
-      const invitation_token = params['token'];
+      this.isPreviewMode = isPreviewMode(params[INVITATION_QUERY.preview]);
+      const invitation_token = params[INVITATION_QUERY.token];
 
       if (invitation_token) {
         this.invitationLoadPending = true;
@@ -130,9 +133,7 @@ export class M01PageComponent implements OnInit, OnDestroy {
           },
           error: (error) => {
             console.error('Error al cargar datos de invitación:', error);
-            this.invitationStateService.setError(
-              'Error al cargar los datos de la invitación',
-            );
+            this.invitationStateService.setError(PAGE_COPY.messages.loadError);
             this.invitationStateService.setLoading(false);
             this.invitationLoadPending = false;
 

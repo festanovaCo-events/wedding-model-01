@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimationItem } from 'lottie-web';
 import { TitleCoupleComponent } from "../../shared/components/ui/title-couple/title-couple.component";
+import { PAGE_COPY } from '../../shared/constants/page-copy';
 import { WEDDING_INFO } from '../../shared/constants/wedding-info';
 import { ACTIVE_THEME } from '../../shared/themes/active-theme';
 @Component({
@@ -14,6 +15,7 @@ import { ACTIVE_THEME } from '../../shared/themes/active-theme';
 })
 export class M01BannerHomeComponent {
   private animationItem: AnimationItem | undefined;
+  pageCopy = PAGE_COPY;
   weddingInfo = WEDDING_INFO;
 
   options: AnimationOptions = {

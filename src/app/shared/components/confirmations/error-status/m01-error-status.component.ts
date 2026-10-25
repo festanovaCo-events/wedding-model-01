@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PAGE_COPY } from '../../../constants/page-copy';
 
 @Component({
   selector: 'app-m01-error-status',
@@ -10,4 +11,5 @@ import { CommonModule } from '@angular/common';
 })
 export class M01ErrorStatusComponent {
   @Input() error: string | null = null;
+  pageCopy = PAGE_COPY;
 }
