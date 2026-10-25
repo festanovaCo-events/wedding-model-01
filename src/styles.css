@@ -78,9 +78,48 @@
   --color-theme-info: var(--theme-info);
 
   --shadow-rounded: 0px 0px 15px -1px rgba(0, 0, 0, 0.4);
+  --shadow-soft: 0px 0px 5px -1px rgba(0, 0, 0, 0.40);
 
   /* half: 50% */
   --radius-half: 50%;
+  --radius-20: 20px;
+  --radius-50: 50px;
+
+  --font-weight-300: 300;
+
+  --text-15: 15px;
+  --text-20: 20px;
+  --text-22: 22px;
+  --text-25: 25px;
+  --text-28: 1.75rem;
+  --text-30: 30px;
+  --text-35: 35px;
+  --text-38: 38px;
+  --text-40: 40px;
+  --text-55: 55px;
+  --text-65: 65px;
+  --text-85: 85px;
+  --text-100: 100px;
+  --text-130: 130px;
+
+  --tracking-quarter: 0.25em;
+  --leading-title: 0.9;
+  --leading-belt: 1.2;
+
+  --spacing-10pct: 10%;
+  --spacing-14pct: 14%;
+  --spacing-20pct: 20%;
+  --spacing-25pct: 25%;
+  --spacing-35pct: 35%;
+  --spacing-40pct: 40%;
+  --spacing-60pct: 60%;
+  --spacing-85pct: 85%;
+  --spacing-90pct: 90%;
+  --spacing-110pct: 110%;
+  --spacing-50vh: 50vh;
+  --spacing-85vh: 85vh;
+  --spacing-90vh: 90vh;
+  --spacing-90vw: 90vw;
 }
 
 :root {

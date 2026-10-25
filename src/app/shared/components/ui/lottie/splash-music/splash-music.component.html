@@ -1,8 +1,8 @@
-<div class="fixed bottom-0 md:top-0 right-0 z-[1000]" >
-  <div class="w-[100px] h-[100px] cursor-pointer" (click)="onClick()">
+<div class="fixed bottom-0 md:top-0 right-0 z-1000" >
+  <div class="w-25 h-25 cursor-pointer" (click)="onClick()">
       <ng-lottie
     *ngIf="shouldLoadAnimation"
-    class="w-[90px] h-[90px] md:w-[100px] md:h-[100px] max-w-full max-h-full"
+    class="w-22.5 h-22.5 md:w-25 md:h-25 max-w-full max-h-full"
     [options]="options"
     (animationCreated)="animationCreated($event)"
   ></ng-lottie>

@@ -1,5 +1,5 @@
 <section
-  class="parallax-container relative h-[960px] md:h-[1296px] 2xl:h-[1900px] flex items-center justify-center text-center text-white pb-[40%] md:pb-[20%]"
+  class="parallax-container relative h-240 md:h-324 2xl:h-475 flex items-center justify-center text-center text-white pb-40pct md:pb-20pct"
   [ngStyle]="{'background-image': weddingInfo.assets.bannerImage ? 'url(' + weddingInfo.assets.bannerImage + ')' : 'none'}">
   <video #bgVideo *ngIf="weddingInfo.assets.bannerVideo" muted [muted]="true" playsinline autoplay loop
     preload="metadata" class="absolute inset-0 w-full h-full object-cover z-0" aria-hidden="true" role="presentation"
@@ -16,7 +16,7 @@
     <!-- Box nombre y fecha -->
     <div class="flex flex-row">
       <div class="h-px w-1/6 md:w-1/4 bg-white mx-auto my-0 mt-5"></div>
-      <span class="text-white text-[25px] font-light drop-shadow-lg">
+      <span class="text-white text-25 font-light drop-shadow-lg">
         {{ weddingInfo.dates.bannerDate }}
       </span>
       <div class="h-px w-1/6 md:w-1/4 bg-white mx-auto my-0 mt-5"></div>
@@ -26,19 +26,19 @@
     <!-- Box nombre y fecha -->
 
     <!-- Box frase portada -->
-    <div class="mt-[50px] w-[90%] md:w-[85%] lg:w-auto mx-auto">
+    <div class="mt-12.5 w-90pct md:w-85pct lg:w-auto mx-auto">
       <img [src]="weddingInfo.quote.openingQuoteImage" alt="comilla-apertura"
-        class="w-[30px] h-[30px] mx-auto my-2.5" />
-      <p class="text-white text-[20px] md:text-[28px] font-light drop-shadow-lg">
+        class="w-7.5 h-7.5 mx-auto my-2.5" />
+      <p class="text-white text-20 md:text-28 font-light drop-shadow-lg">
         {{ weddingInfo.quote.text.split('\n')[0] }}<br />
         {{ weddingInfo.quote.text.split('\n')[1] }}
       </p>
-      <img [src]="weddingInfo.quote.closingQuoteImage" alt="comilla-cierre" class="w-[30px] h-[30px] mx-auto my-2.5" />
+      <img [src]="weddingInfo.quote.closingQuoteImage" alt="comilla-cierre" class="w-7.5 h-7.5 mx-auto my-2.5" />
     </div>
     <!-- Box frase portada -->
 
     <div class="w-14 h-w-14 mx-auto mt-10">
-      <ng-lottie class="w-[90px] h-[90px] max-w-full max-h-full" [options]="options"
+      <ng-lottie class="w-22.5 h-22.5 max-w-full max-h-full" [options]="options"
         (animationCreated)="animationCreated($event)" />
     </div>
   </div>
