@@ -12,7 +12,7 @@ export class TitleCoupleComponent {
   @Input() name_wife = '';
   @Input() name_husband = '';
   @Input() classHeading1 =
-    'text-white text-[100px] md:text-[130px] font-bold flex-col md:flex-row gap-3 md:gap-7';
+    'text-white text-100 md:text-130 font-bold flex-col md:flex-row gap-3 md:gap-7';
   @Input() classSpan =
-    'text-couple-separator text-[40px] w-[50px] h-[50px] md:w-[60px] md:h-[60px] leading-[50px] md:leading-[60px]';
+    'text-couple-separator text-40 w-12.5 h-12.5 md:w-15 md:h-15 leading-12.5 md:leading-15';
 }

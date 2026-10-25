@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
         <ng-container #container></ng-container>
       }
       @if (loading && !loaded) {
-        <div class="flex justify-center items-center min-h-[200px] absolute inset-x-0 pointer-events-none">
+        <div class="flex justify-center items-center min-h-50 absolute inset-x-0 pointer-events-none">
           <div class="w-10 h-10 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
       }

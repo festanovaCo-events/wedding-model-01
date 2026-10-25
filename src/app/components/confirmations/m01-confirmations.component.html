@@ -4,8 +4,8 @@
         : 'flex flex-col md:flex-row mx-auto gap-12 md:gap-18 lg:gap-44 justify-center items-center md:items-start'">
         <app-title-couple *ngIf="!isConfirmed" [name_wife]="weddingInfo.couple.wifeName"
             [name_husband]="weddingInfo.couple.husbandName"
-            classHeading1="text-heading text-[65px] md:text-[85px] flex-row gap-3"
-            classSpan="text-couple-separator text-[28px] w-[30px] h-[30px] md:w-[40px] md:h-[40px] leading-[30px] md:leading-[45px]" />
+            classHeading1="text-heading text-65 md:text-85 flex-row gap-3"
+            classSpan="text-couple-separator text-28 w-7.5 h-7.5 md:w-10 md:h-10 leading-7.5 md:leading-11.25" />
 
         <!-- Mensaje cuando ya está confirmado -->
         <app-m01-confirmation-status *ngIf="isConfirmed" [invitationData]="invitationData"></app-m01-confirmation-status>
@@ -20,7 +20,7 @@
         <div *ngIf="isSingleOption && !isConfirmed && !isDeclined && !error"
             class="flex justify-center items-center w-full px-4">
             <button (click)="openModal()"
-                class="bg-primary hover:bg-primary-soft font-bold rounded-[50px] text-white px-6 py-2.5 md:px-[33px] md:py-[13px] text-sm md:text-base lg:text-lg uppercase transition-all cursor-pointer shadow-md max-w-full text-center">
+                class="bg-primary hover:bg-primary-soft font-bold rounded-50 text-white px-6 py-2.5 md:px-8.25 md:py-3.25 text-sm md:text-base lg:text-lg uppercase transition-all cursor-pointer shadow-md max-w-full text-center">
                 {{ pageCopy.rsvp.confirmPresence }}
             </button>
         </div>
