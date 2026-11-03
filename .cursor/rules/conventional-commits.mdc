@@ -1,0 +1,34 @@
+---
+description: Conventional Commits format for all git commit messages
+alwaysApply: true
+---
+
+# Conventional Commits
+
+Always use Conventional Commits when creating git commits in this repo.
+
+## Format
+
+```
+type(optional-scope): short description
+```
+
+Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
+
+## Examples
+
+```
+feat(hero): add entrance animation
+fix(rsvp): correct form validation
+chore: update Angular dependencies
+ci: add commitlint workflow
+```
+
+## Do not
+
+- `Updated stuff`
+- `WIP`
+- `fix bug`
+- Skip validation with `--no-verify` unless the user explicitly asks
+
+Este repo no tiene commitlint en el árbol. El formato se aplica igual en cada commit.
