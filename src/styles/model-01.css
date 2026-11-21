@@ -16,3 +16,212 @@ html:has(.m01-page) app-footer > footer {
   max-width: 1280px;
   margin-inline: auto;
 }
+
+/* Pantallas muy pequeñas: tipografía, secciones, botones y modales */
+@media (max-width: 380px) {
+  /* Tipografía compartida */
+  .m01-page .text-100 {
+    font-size: clamp(3.5rem, 18vw, 4.5rem);
+  }
+
+  .m01-page .text-65 {
+    font-size: clamp(2.35rem, 14vw, 3.4rem);
+  }
+
+  .m01-page .text-40 {
+    font-size: clamp(1.65rem, 9.5vw, 1.875rem);
+  }
+
+  .m01-page .text-30 {
+    font-size: 1.35rem;
+  }
+
+  .m01-page .text-28 {
+    font-size: 1.2rem;
+  }
+
+  .m01-page .text-25 {
+    font-size: 1.05rem;
+  }
+
+  .m01-page .leading-15 {
+    line-height: 1.2;
+  }
+
+  /* Hero: separador & */
+  .m01-page .text-40.w-12\.5 {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .m01-page .mt-12\.5 {
+    margin-top: 2rem;
+  }
+
+  /* Countdown */
+  .m01-page .box-aros {
+    width: min(88vw, 17.5rem);
+    height: min(88vw, 17.5rem);
+  }
+
+  .m01-page .box-aros > div {
+    width: min(72vw, 14rem);
+    height: min(72vw, 14rem);
+    padding: 0.85rem;
+  }
+
+  .m01-page .box-aros .text-lg {
+    font-size: 0.85rem;
+  }
+
+  .m01-page .box-aros .w-25pct {
+    padding-inline: 0.25rem;
+  }
+
+  /* Event schedule + cards */
+  .m01-page .gap-16 {
+    gap: 2.75rem;
+  }
+
+  .m01-page .w-43\.75.h-43\.75 {
+    width: min(42vw, 8.75rem);
+    height: min(42vw, 8.75rem);
+    padding: 1rem;
+  }
+
+  .m01-page .belt-img {
+    max-width: calc(100vw - 3rem);
+    padding-inline: 0.35rem;
+    box-sizing: border-box;
+  }
+
+  /* Evita que las cintas (::before/::after) empujen el scrollWidth */
+  .m01-page .gap-9 {
+    overflow-x: clip;
+    padding-inline: 0.75rem;
+  }
+
+  /* Portraits / gifts / titles */
+  .m01-page .pt-22\.5 {
+    padding-top: 3.5rem;
+  }
+
+  /* Instructions */
+  .m01-page .instructions {
+    padding-inline: 0.5rem;
+  }
+
+  .m01-page .instructions .mt-20 {
+    margin-top: 2.5rem;
+  }
+
+  .m01-page .instructions .min-h-100 {
+    min-height: auto;
+    padding-block: 1.75rem;
+    padding-inline: 1.15rem;
+  }
+
+  .m01-page .instructions .basis-70 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  /* Instagram */
+  .m01-page .instagram h2 {
+    padding-inline: 1rem;
+  }
+
+  .m01-page .instagram a.lowercase {
+    font-size: clamp(1.45rem, 10vw, 2.15rem);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    padding-inline: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Confirmations / RSVP */
+  .m01-page .confirmations {
+    padding-inline: 0.75rem;
+  }
+
+  .m01-page .confirmations .gap-12 {
+    gap: 2rem;
+  }
+
+  .m01-page .confirmations .text-28.w-7\.5 {
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+  }
+
+  /* Botones píldora (eventos, instrucciones, instagram, RSVP) */
+  .m01-page a.rounded-50,
+  .m01-page button.rounded-50 {
+    max-width: 100%;
+    min-width: 0;
+    width: min(100%, 16rem);
+    padding-inline: 1.35rem;
+    box-sizing: border-box;
+  }
+
+  /* Modal de bienvenida (fuera de .m01-page) */
+  .welcome-modal {
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .welcome-modal .text-38 {
+    font-size: clamp(1.4rem, 7.8vw, 1.9rem);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .welcome-modal .text-15 {
+    font-size: 0.8rem;
+  }
+
+  .welcome-modal button.rounded-50 {
+    width: min(100%, 16rem);
+    max-width: 100%;
+    min-width: 0;
+    padding-inline: 1.15rem;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+  }
+
+  /* Modal guía RSVP (hermano de .m01-page) */
+  app-modal button.rounded-50 {
+    max-width: 100%;
+    min-width: 0;
+    width: min(100%, 16rem);
+    padding-inline: 1.25rem;
+    box-sizing: border-box;
+  }
+
+  /* Página expirada */
+  .tracking-quarter {
+    letter-spacing: 0.14em;
+  }
+
+  main.min-h-screen {
+    padding-inline: 0.85rem;
+    padding-block: 2rem;
+  }
+
+  main.min-h-screen .gap-8 {
+    gap: 1.5rem;
+  }
+
+  main.min-h-screen .px-6 {
+    padding-inline: 1rem;
+  }
+
+  /* Toast en pantallas muy estrechas */
+  #toast-container > div {
+    font-size: 16px !important;
+    padding: 12px 14px !important;
+  }
+}

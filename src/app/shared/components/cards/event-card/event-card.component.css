@@ -25,4 +25,19 @@
         right: -15px;
         top: 0;
     }
+
+    @media (max-width: 380px) {
+        .belt-img::before,
+        .belt-img::after {
+            width: 12px;
+        }
+
+        .belt-img::before {
+            left: -11px;
+        }
+
+        .belt-img::after {
+            right: -11px;
+        }
+    }
 }

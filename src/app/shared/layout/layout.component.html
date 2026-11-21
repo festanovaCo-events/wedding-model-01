@@ -5,7 +5,8 @@
 <div *ngIf="!isLoading && !modalDismissed"
   class="fixed inset-0 bg-primary/70 backdrop-blur-sm flex items-center justify-center z-9999"
   (click)="triggerBounce()">
-  <div class="text-center p-4 app-animated app-slide-in-down" #modalContent (click)="$event.stopPropagation()">
+  <div class="welcome-modal text-center p-4 app-animated app-slide-in-down" #modalContent
+    (click)="$event.stopPropagation()">
     <div class="flex flex-col mb-6.25">
       <h1 class="text-38 leading-10 md:text-55 md:leading-12.5 mb-4 text-white w-full">
         {{ pageCopy.welcome.title }}<br />{{ weddingInfo.couple.husbandName }} y {{ weddingInfo.couple.wifeName }}
